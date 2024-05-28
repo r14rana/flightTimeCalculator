@@ -4,82 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flight Time Calculator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-            margin: 0;
-        }
-        .container {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .container h1 {
-            margin-bottom: 20px;
-        }
-        .container label {
-            display: block;
-            margin-bottom: 10px;
-        }
-        .container input {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .container button {
-            padding: 10px 15px;
-            border: none;
-            background-color: #28a745;
-            color: white;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .container button:hover {
-            background-color: #218838;
-        }
-        .result {
-            margin-top: 20px;
-            font-weight: bold;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <h1>Flight Time Calculator</h1>
-        <label for="battery">Enter the battery capacity (in mAh):</label>
-        <input type="number" id="battery" placeholder="Battery Capacity (mAh)">
-        <label for="motor">Enter the Maximum Amps consumed by the motor (in Amps):</label>
-        <input type="number" id="motor" placeholder="Motor Amps (A)">
-        <button onclick="calculateFlightTime()">Calculate</button>
-        <div class="result" id="result"></div>
+        <div class="input-container">
+            <label for="mAh">Battery Capacity (mAh):</label>
+            <input type="number" id="mAh">
+        </div>
+        <div class="input-container">
+            <label for="motorAmp">Maximum Amps by Motor (Amps):</label>
+            <input type="number" id="motorAmp">
+        </div>
+        <button onclick="calculateFlightTime()">Calculate Flight Time</button>
+        <div id="result"></div>
     </div>
-
-    <script>
-        function calculateFlightTime() {
-            var mAh = document.getElementById('battery').value;
-            var motorAmp = document.getElementById('motor').value;
-
-            if (mAh === '' || motorAmp === '' || mAh <= 0 || motorAmp <= 0) {
-                document.getElementById('result').textContent = 'Please enter valid values for battery capacity and motor amps.';
-                return;
-            }
-
-            var effectiveBatAmp = 0.78 * mAh / 1000; // convert mAh to Ah
-            var totalFlightTime = (effectiveBatAmp / motorAmp) * 60; // in minutes
-
-            var minutes = Math.floor(totalFlightTime);
-            var seconds = Math.floor((totalFlightTime - minutes) * 60);
-
-            document.getElementById('result').textContent = 'The estimated flight time is ' + minutes + ' minutes and ' + seconds + ' seconds.';
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
