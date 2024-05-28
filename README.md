@@ -7,4 +7,4 @@ my calculator. The output of the code will be given in the format of:
 The estimated flight time is %d minutes and %d seconds.
 %d represent the final values of the equation.
 
-
+//Ignore this line, this line is for me to learn about git hub (cuz i am learning to pull)
